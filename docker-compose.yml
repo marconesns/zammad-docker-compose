@@ -54,6 +54,8 @@ x-shared:
 
     image: ${IMAGE_REPO:-ghcr.io/zammad/zammad}:${VERSION:-6.5.1}
     restart: ${RESTART:-always}
+    networks:
+      - network_public    
     volumes:
       - zammad-storage:/opt/zammad/storage
     depends_on:
@@ -142,3 +144,6 @@ volumes:
     driver: local
   zammad-storage:
     driver: local
+networks:
+  network_public:
+    external: true
